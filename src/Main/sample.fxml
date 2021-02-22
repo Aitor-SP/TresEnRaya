@@ -7,6 +7,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.controller">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -54,15 +55,15 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button fx:id="btn1" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" />
-                              <Button fx:id="btn2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" GridPane.columnIndex="1" />
-                              <Button fx:id="btn3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" GridPane.columnIndex="2" />
-                              <Button fx:id="btn4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" GridPane.rowIndex="1" />
-                              <Button fx:id="btn5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button fx:id="btn6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Button fx:id="btn7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" GridPane.rowIndex="2" />
-                              <Button fx:id="btn8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Button fx:id="btn9" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button fx:id="btn1" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clickBtn" />
+                              <Button fx:id="btn2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clickBtn" GridPane.columnIndex="1" />
+                              <Button fx:id="btn3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clickBtn" GridPane.columnIndex="2" />
+                              <Button fx:id="btn4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clickBtn" GridPane.rowIndex="1" />
+                              <Button fx:id="btn5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clickBtn" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button fx:id="btn6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clickBtn" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button fx:id="btn7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clickBtn" GridPane.rowIndex="2" />
+                              <Button fx:id="btn8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clickBtn" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button fx:id="btn9" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clickBtn" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                            </children>
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -72,9 +73,12 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
-                        <RadioButton layoutX="116.0" layoutY="119.0" mnemonicParsing="false" text="P1 vs P2" />
-                        <RadioButton layoutX="111.0" layoutY="178.0" mnemonicParsing="false" text="P1 vs CPU" />
-                        <RadioButton layoutX="106.0" layoutY="242.0" mnemonicParsing="false" text="CPU vs CPU" />
+                        <RadioButton layoutX="116.0" layoutY="119.0" mnemonicParsing="false" text="P1 vs P2">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="grupo1" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton layoutX="111.0" layoutY="178.0" mnemonicParsing="false" text="P1 vs CPU" toggleGroup="$grupo1" />
+                        <RadioButton layoutX="106.0" layoutY="242.0" mnemonicParsing="false" text="CPU vs CPU" toggleGroup="$grupo1" />
                         <Button layoutX="49.0" layoutY="317.0" mnemonicParsing="false" text="START" />
                         <Button layoutX="190.0" layoutY="317.0" mnemonicParsing="false" text="Clasificación" />
                         <Text layoutX="123.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turno de " />
