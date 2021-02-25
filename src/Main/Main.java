@@ -1,5 +1,6 @@
 package Main;
 
+import Main.Juego.Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,20 +18,20 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        String cssDark = getClass().getResource("css/Light.css").toExternalForm();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main/Juego/sample.fxml"));
         Parent root = loader.load();
 
-        controller controller = loader.getController();
+        Controller controller = loader.getController();
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(cssDark);
+        scene.getStylesheets().add("Main/CSS/Styles.css");
 
         controller.setScene(scene);
         controller.setStage(primaryStage);
 
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Tres en raya - Aitor");
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 }
