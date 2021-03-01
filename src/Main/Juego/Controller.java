@@ -10,9 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -22,7 +19,6 @@ public class Controller implements Initializable {
 
     @FXML private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
     @FXML private Button btnStart;
-    @FXML private VBox opcionRadio;
     @FXML private ToggleGroup grupo1;
     @FXML private RadioButton rbtnP1P2, rbtnP1Cpu, rbtnCpuCpu;
     @FXML private MenuItem menuNueva;
@@ -75,10 +71,21 @@ public class Controller implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource("/Main/AcercaDe/Acercade.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(root);
-            stage.setTitle("Acerca de - Tres en Raya by Aitor");
+            stage.setTitle("Acerca de");
             stage.setScene(scene);
             stage.show();
         }
+    }
+
+    // Accedemos al Hall de la Fama donde aparecen los campeones
+    public void clickHallOfFame (ActionEvent actionEvent) throws IOException {
+        Button btnHall = (Button) actionEvent.getSource();
+        Parent root = FXMLLoader.load(getClass().getResource("/Main/Ranking/ranking.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setTitle("Hall de la Fama");
+        stage.setScene(scene);
+        stage.show();
     }
 
     // Reinicia el juego, pero no se como hacerlo mejor XD
@@ -102,7 +109,16 @@ public class Controller implements Initializable {
     // Iniciar el juego teniendo en cuenta la opción elegida, pero no tengo ni idea T_T
     public void clickStart (ActionEvent actionEvent) {
         RadioButton optradioButton = (RadioButton) grupo1.getSelectedToggle();
-        String id = optradioButton.getId();
-
+        if (optradioButton!=null) {
+            if (rbtnP1P2.isSelected()){
+                P1vsP2(actionEvent);
+            }
+            if (rbtnP1Cpu.isSelected()){
+                P1vsCPU(actionEvent);
+            }
+            if (rbtnCpuCpu.isSelected()){
+                CPUvsCPU(actionEvent);
+            }
+        }
     }
 }
