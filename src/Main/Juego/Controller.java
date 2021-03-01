@@ -99,8 +99,10 @@ public class Controller implements Initializable {
             rbtnP1P2.setSelected(false);
     }
 
+    // Iniciar el juego teniendo en cuenta la opción elegida, pero no tengo ni idea T_T
     public void clickStart (ActionEvent actionEvent) {
         RadioButton optradioButton = (RadioButton) grupo1.getSelectedToggle();
         String id = optradioButton.getId();
+
     }
 }
