@@ -3,10 +3,12 @@ package Main.Jugador;
 import Main.Main;
 
 public class Jugador {
-    private String jugador;
+    String jugador;
+    int pGanadas;
 
-    public Jugador(String jugador) {
+    public Jugador(String jugador, int pGanadas) {
         this.jugador = jugador;
+        this.pGanadas = pGanadas;
     }
 
     public String getJugador() {
@@ -15,5 +17,13 @@ public class Jugador {
 
     public void setJugador(String jugador) {
         this.jugador = jugador;
+    }
+
+    public int getpGanadas() {
+        return pGanadas;
+    }
+
+    public void setpGanadas(int pGanadas) {
+        this.pGanadas = pGanadas;
     }
 }
